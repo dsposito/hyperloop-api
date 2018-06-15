@@ -4,7 +4,7 @@ from models.tube import *
 
 import json
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='docs')
 
 # Create an APISpec
 spec = APISpec(
@@ -23,7 +23,7 @@ spec = APISpec(
 @app.route("/")
 @app.route("/docs")
 def home():
-    return render_template("docs/index.html")
+    return render_template("index.html")
 
 @app.route("/api/tubes")
 def tubes():
