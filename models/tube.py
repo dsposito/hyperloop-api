@@ -14,14 +14,14 @@ class TubeSchema(Schema):
     type = fields.Str(required=True, example='tunnel')
     status = fields.Str(required=True, example='active')
 
-class TubeType(Enum):
+class TubeType(str, Enum):
     ELEVATED = "elevated"
     TUNNEL = "tunnel"
 
     def __str__(self):
         return str(self.value)
 
-class TubeStatus(Enum):
+class TubeStatus(str, Enum):
     ACTIVE = "active"
     INACTIVE = "inactive"
 
