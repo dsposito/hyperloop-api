@@ -40,9 +40,9 @@ def tubes():
     """
     schema = TubeSchema(many=True)
     tubes = schema.dump([
-        Tube(15, 'CA-NT1', TubeType.TUNNEL),
-        Tube(35, 'CA-ST1', TubeType.TUNNEL),
-        Tube(85, 'CA-NE2', TubeType.ELEVATED)
+        Tube(15, 'CA-NT1', TubeType.TUNNEL, TubeStatus.ACTIVE),
+        Tube(35, 'CA-ST1', TubeType.TUNNEL, TubeStatus.INACTIVE),
+        Tube(85, 'CA-NE2', TubeType.ELEVATED, TubeStatus.ACTIVE)
     ])
 
     return jsonify(tubes.data)
