@@ -27,13 +27,14 @@ def home():
 
 @app.route("/api/tubes")
 def tubes():
-    """API endpoint for getting hyperloop tubes.
+    """
     ---
     get:
-        description: Tubes
+        summary: Tubes
+        description: Get a list of tubes.
         responses:
             200:
-                description: List of hyperloop tubes.
+                description: List of tubes
                 schema:
                     type: array
                     items: TubeSchema
