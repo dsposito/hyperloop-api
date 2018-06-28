@@ -3,6 +3,7 @@ from flask import Flask, jsonify, redirect, url_for
 import json
 
 from docs.docs import docs
+from models.station import *
 from models.tube import *
 
 # Boot the application and its components.
@@ -27,6 +28,56 @@ spec = APISpec(
 def index():
     return redirect(url_for('docs.index'))
 
+@app.route("/api/stations")
+def stations():
+    """
+    ---
+    get:
+        summary: Stations
+        description: Get a list of stations.
+        responses:
+            200:
+                description: List of stations
+                schema:
+                    type: array
+                    items: StationSchema
+    """
+    schema = StationSchema(many=True)
+    stations = schema.dump([
+        Station(1, StationType.PUBLIC, StationStatus.ACTIVE, 33.920659, -118.328278),
+        Station(1900, StationType.PUBLIC, StationStatus.INACTIVE, 37.492509, -121.944616),
+        Station(6800, StationType.PRIVATE, StationStatus.ACTIVE, 35.671724, -97.508266)
+    ])
+
+    return jsonify(stations.data)
+
+@app.route("/api/stations/<int:id>")
+def station(id):
+    """
+    ---
+    get:
+        summary: Station
+        description: Get a specific station.
+        responses:
+            200:
+                description: A station
+                schema: StationSchema
+            404:
+                description: Station not found
+        parameters:
+          - name: id
+            in: path
+            description: ID of the station to get
+            required: true
+            type: integer
+            format: int32
+    """
+    schema = StationSchema()
+    station = schema.dump(
+        Station(id, StationType.PUBLIC, StationStatus.ACTIVE, 33.920659, -118.328278)
+    )
+
+    return jsonify(station.data)
 
 @app.route("/api/tubes")
 def tubes():
@@ -82,6 +133,8 @@ def tube(id):
 
 # Register paths.
 with app.test_request_context():
+    spec.add_path(view=stations)
+    spec.add_path(view=station)
     spec.add_path(view=tubes)
     spec.add_path(view=tube)
 
