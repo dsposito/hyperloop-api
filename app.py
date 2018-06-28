@@ -1,10 +1,15 @@
 from apispec import APISpec
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, redirect, url_for
+
+from docs.docs import docs
 from models.tube import *
 
 import json
 
-app = Flask(__name__, template_folder='docs')
+# Boot the application and its components.
+app = Flask(__name__)
+app.register_blueprint(docs)
+
 
 # Create an APISpec
 spec = APISpec(
@@ -20,10 +25,6 @@ spec = APISpec(
 )
 
 
-@app.route("/")
-@app.route("/docs")
-def home():
-    return render_template("index.html")
 
 @app.route("/api/tubes")
 def tubes():
