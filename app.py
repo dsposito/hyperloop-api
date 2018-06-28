@@ -84,5 +84,5 @@ with app.test_request_context():
     spec.add_path(view=tube)
 
 # We're good to go! Save this to a file for now.
-with open('static/apispec.json', 'w') as f:
+with open('docs/static/apispec.json', 'w') as f:
     json.dump(spec.to_dict(), f)
