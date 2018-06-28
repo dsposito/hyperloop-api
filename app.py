@@ -23,6 +23,9 @@ spec = APISpec(
     ],
 )
 
+@app.route('/')
+def index():
+    return redirect(url_for('docs.index'))
 
 
 @app.route("/api/tubes")
