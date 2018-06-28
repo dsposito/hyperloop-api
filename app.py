@@ -1,10 +1,9 @@
 from apispec import APISpec
 from flask import Flask, jsonify, redirect, url_for
+import json
 
 from docs.docs import docs
 from models.tube import *
-
-import json
 
 # Boot the application and its components.
 app = Flask(__name__)
