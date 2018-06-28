@@ -48,10 +48,39 @@ def tubes():
 
     return jsonify(tubes.data)
 
+@app.route("/api/tubes/<int:id>")
+def tube(id):
+    """
+    ---
+    get:
+        summary: Tube
+        description: Get a specific tube.
+        responses:
+            200:
+                description: A tube
+                schema: TubeSchema
+            404:
+                description: Tube not found
+        parameters:
+          - name: id
+            in: path
+            description: ID of the tube to get
+            required: true
+            type: integer
+            format: int32
+    """
+    schema = TubeSchema()
+    tube = schema.dump(
+        Tube(id, 'CA-NT1', TubeType.TUNNEL, TubeStatus.ACTIVE)
+    )
+
+    return jsonify(tube.data)
+
 
 # Register paths.
 with app.test_request_context():
     spec.add_path(view=tubes)
+    spec.add_path(view=tube)
 
 # We're good to go! Save this to a file for now.
 with open('static/apispec.json', 'w') as f:
