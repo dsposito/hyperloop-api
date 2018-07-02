@@ -3,6 +3,7 @@ from flask import Flask, jsonify, redirect, url_for
 import json
 
 from docs.docs import docs
+from models.pod import *
 from models.station import *
 from models.tube import *
 
@@ -79,6 +80,56 @@ def station(id):
 
     return jsonify(station.data)
 
+@app.route("/api/pods")
+def pods():
+    """
+    ---
+    get:
+        summary: Pods
+        description: Get a list of pods.
+        responses:
+            200:
+                description: List of pods
+                schema:
+                    type: array
+                    items: PodSchema
+    """
+    schema = PodSchema(many=True)
+    pods = schema.dump([
+        Pod(2000, PodType.PASSENGER, PodStatus.ACTIVE),
+        Pod(3005, PodType.CARGO, PodStatus.ACTIVE),
+    ])
+
+    return jsonify(pods.data)
+
+@app.route("/api/pods/<int:id>")
+def pod(id):
+    """
+    ---
+    get:
+        summary: Pod
+        description: Get a specific pod.
+        responses:
+            200:
+                description: A pod
+                schema: PodSchema
+            404:
+                description: Pod not found
+        parameters:
+          - name: id
+            in: path
+            description: ID of the pod to get
+            required: true
+            type: integer
+            format: int32
+    """
+    schema = PodSchema()
+    pod = schema.dump(
+        Pod(id, PodType.PASSENGER, PodStatus.ACTIVE),
+    )
+
+    return jsonify(pod.data)
+
 @app.route("/api/tubes")
 def tubes():
     """
@@ -137,6 +188,8 @@ with app.test_request_context():
     spec.add_path(view=station)
     spec.add_path(view=tubes)
     spec.add_path(view=tube)
+    spec.add_path(view=pods)
+    spec.add_path(view=pod)
 
 # We're good to go! Save this to a file for now.
 with open('docs/static/apispec.json', 'w') as f:
