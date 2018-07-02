@@ -55,6 +55,6 @@ class PodSchema(Schema):
     id = fields.Int(description="The pod's unique identifier.", example=4597, required=True)
     type = fields.Str(description="The pod's type.", example=PodType.PASSENGER, required=True)
     status = fields.Str(description="The pod's status.", example=PodStatus.ACTIVE, required=True)
-    max_speed = fields.Int(description="The max speed the pod can travel at.", example=700, validate=lambda w: 1 <= w <= 760, required=True)
+    max_speed = fields.Int(description="The max speed the pod can travel at.", example=700, validate=lambda s: 1 <= s <= 760, required=True)
     max_weight = fields.Int(description="The max weight the pod can carry.", example=3000, validate=lambda w: 1 <= w <= 10000, required=True)
     name = fields.Str(description="The pod's memorable name.", example="CA-1440", required=True)
