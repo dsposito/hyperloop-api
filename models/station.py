@@ -1,5 +1,5 @@
-from enum import Enum
 from marshmallow import Schema, fields
+from models.model import ModelEnum
 
 class Station():
     def __init__(self, id, type, status, latitude, longitude):
@@ -9,19 +9,13 @@ class Station():
         self.latitude = latitude
         self.longitude = longitude
 
-class StationType(str, Enum):
+class StationType(str, ModelEnum):
     PUBLIC = "public"
     PRIVATE = "private"
 
-    def __str__(self):
-        return str(self.value)
-
-class StationStatus(str, Enum):
+class StationStatus(str, ModelEnum):
     ACTIVE = "active"
     INACTIVE = "inactive"
-
-    def __str__(self):
-        return str(self.value)
 
 class StationSchema(Schema):
     id = fields.Int(description="The station's unique identifier.", example=1, required=True)

@@ -1,5 +1,5 @@
-from enum import Enum
 from marshmallow import Schema, fields
+from models.model import ModelEnum
 
 class Tube():
     def __init__(self, id, name, type, status):
@@ -8,19 +8,13 @@ class Tube():
         self.type = type
         self.status = status
 
-class TubeType(str, Enum):
+class TubeType(str, ModelEnum):
     ELEVATED = "elevated"
     TUNNEL = "tunnel"
 
-    def __str__(self):
-        return str(self.value)
-
-class TubeStatus(str, Enum):
+class TubeStatus(str, ModelEnum):
     ACTIVE = "active"
     INACTIVE = "inactive"
-
-    def __str__(self):
-        return str(self.value)
 
 class TubeSchema(Schema):
     id = fields.Int(description="The tube's unique identifier.", example=35, required=True)
