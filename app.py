@@ -45,9 +45,9 @@ def stations():
     """
     schema = StationSchema(many=True)
     stations = schema.dump([
-        Station(1, StationType.PUBLIC, StationStatus.ACTIVE, 33.920659, -118.328278),
-        Station(1900, StationType.PUBLIC, StationStatus.INACTIVE, 37.492509, -121.944616),
-        Station(6800, StationType.PRIVATE, StationStatus.ACTIVE, 35.671724, -97.508266)
+        Station(1, StationType.PUBLIC, "HAW", 33.920659, -118.328278, StationStatus.ACTIVE),
+        Station(1900, StationType.PUBLIC, "FRE", 37.492509, -121.944616, StationStatus.INACTIVE),
+        Station(6800, StationType.PRIVATE, "EMD", 35.671724, -97.508266, StationStatus.ACTIVE)
     ])
 
     return jsonify(stations.data)
@@ -75,7 +75,7 @@ def station(id):
     """
     schema = StationSchema()
     station = schema.dump(
-        Station(id, StationType.PUBLIC, StationStatus.ACTIVE, 33.920659, -118.328278)
+        Station(id, StationType.PUBLIC, "HAW", 33.920659, -118.328278, StationStatus.ACTIVE),
     )
 
     return jsonify(station.data)
