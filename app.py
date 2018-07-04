@@ -14,20 +14,21 @@ app.register_blueprint(docs)
 
 # Create an APISpec
 spec = APISpec(
-    title='Hyperloop API Documentation',
-    info=dict(
-        description='API documentation for the future of mobility.'
-    ),
-    version='1.0.0',
+    version="1.0.0",
     plugins=[
-        'apispec.ext.flask',
-        'apispec.ext.marshmallow',
+        "apispec.ext.flask",
+        "apispec.ext.marshmallow",
+    ],
+    title="Hyperloop API Documentation",
+    info=dict(
+        description="API documentation for the future of mobility."
+    ),
     ],
 )
 
-@app.route('/')
+@app.route("/")
 def index():
-    return redirect(url_for('docs.index'))
+    return redirect(url_for("docs.index"))
 
 @app.route("/api/stations")
 def stations():
@@ -146,9 +147,9 @@ def tubes():
     """
     schema = TubeSchema(many=True)
     tubes = schema.dump([
-        Tube(15, TubeType.TUNNEL, 'CA', TubeDirection.NORTH, 1, TubeStatus.ACTIVE),
-        Tube(35, TubeType.TUNNEL, 'WA', TubeDirection.SOUTH, 1, TubeStatus.INACTIVE),
-        Tube(85, TubeType.ELEVATED, 'CA', TubeDirection.WEST, 2, TubeStatus.ACTIVE)
+        Tube(15, TubeType.TUNNEL, "CA", TubeDirection.NORTH, 1, TubeStatus.ACTIVE),
+        Tube(35, TubeType.TUNNEL, "WA", TubeDirection.SOUTH, 1, TubeStatus.INACTIVE),
+        Tube(85, TubeType.ELEVATED, "CA", TubeDirection.WEST, 2, TubeStatus.ACTIVE)
     ])
 
     return jsonify(tubes.data)
@@ -176,7 +177,7 @@ def tube(id):
     """
     schema = TubeSchema()
     tube = schema.dump(
-        Tube(id, TubeType.TUNNEL, 'CA', TubeDirection.NORTH, 1000, TubeStatus.ACTIVE)
+        Tube(id, TubeType.TUNNEL, "CA", TubeDirection.NORTH, 1000, TubeStatus.ACTIVE)
     )
 
     return jsonify(tube.data)
@@ -191,6 +192,6 @@ with app.test_request_context():
     spec.add_path(view=pods)
     spec.add_path(view=pod)
 
-# We're good to go! Save this to a file for now.
-with open('docs/static/apispec.json', 'w') as f:
+# Save APISpec JSON to a file to be consumed by ReDoc for documentation UI.
+with open("docs/static/apispec.json", "w") as f:
     json.dump(spec.to_dict(), f)
