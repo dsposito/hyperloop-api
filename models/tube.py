@@ -11,7 +11,7 @@ class Tube():
         self.status = status
         self.name = self.getName()
 
-    def getName(self):
+    def getName(self) -> str:
         region = self.region
         direction = self.direction.capitalize()[:1]
         type = self.type.capitalize()[:1]

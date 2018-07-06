@@ -12,13 +12,13 @@ class Pod():
         self.max_weight = self.getMaxWeight() if max_weight is None else max_weight
         self.name = self.getName()
 
-    def getMaxSpeed(self):
+    def getMaxSpeed(self) -> int:
         if (self.isCargo() or self.isVehicle()):
             return 760
         else:
             return 700
 
-    def getMaxWeight(self):
+    def getMaxWeight(self) -> int:
         if (self.isCargo() or self.isVehicle()):
             # 2 vehicles @ 5000lbs each
             return 10000
@@ -26,20 +26,20 @@ class Pod():
             # 12 passengers @ 250lbs each
             return 3000
 
-    def getName(self):
+    def getName(self) -> str:
         type = self.type.capitalize()[:1]
         id_alpha = "".join(random.choices(string.ascii_uppercase, k=1))
         id_numeric = "".join(random.choices(string.digits, k=4))
 
         return "%s%s-%s" % (type, id_alpha, id_numeric)
 
-    def isCargo(self):
+    def isCargo(self) -> bool:
         return self.type == PodType.CARGO
 
-    def isPassenger(self):
+    def isPassenger(self) -> bool:
         return self.type == PodType.PASSENGER
 
-    def isVehicle(self):
+    def isVehicle(self) -> bool:
         return self.type == PodType.VEHICLE
 
 class PodType(str, ModelEnum):
