@@ -5,11 +5,24 @@ info:
   title: Hyperloop API Documentation
   version: 1.0.0
   description: >
-    API documentation for the future of mobility.
+    Contact: [Daniel Sposito](mailto:daniel.g.sposito@gmail.com) | GitHub: http://github.com/dsposito/hyperloop-api
 
-    # Introduction
+    # Manifesto
 
-    This is an intro page!
+    We all have a right to freedom and the pursuit of happiness.
+    Included in these rights is the ability to travel, to explore, to learn, grow and contribute all around the world.
+    Yet today, we are shackled by the modern day likes of the horse-drawn carriage,
+    traveling at painfully slow speeds - often through soul-destroying traffic - preventing us from truly reaching the destinations we seek.
+
+
+    Imagine being able to travel hundreds of miles in minutes instead of hours.
+    Each home and office building could have an underground station (similar to how we have garages today)
+    where you could board a pod-like autonomous vehicle that would whisk you away directly to your destination.
+    This would shrink our world.
+
+
+    Hyperloop technology gives us a better path forward via a fast, weather-immune, and sustainable new form of transportation.
+    This site provides documentation for a theoretical Hyperloop API to power the future of mobility.
 
 paths:
   "/api/stations":
