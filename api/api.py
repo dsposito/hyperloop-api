@@ -26,25 +26,6 @@ def station(id):
 
     return jsonify(station.data)
 
-@api.route("/pods")
-def pods():
-    schema = PodSchema(many=True)
-    pods = schema.dump([
-        Pod(2000, PodType.PASSENGER, PodStatus.ACTIVE),
-        Pod(3005, PodType.CARGO, PodStatus.ACTIVE),
-    ])
-
-    return jsonify(pods.data)
-
-@api.route("/pods/<int:id>")
-def pod(id):
-    schema = PodSchema()
-    pod = schema.dump(
-        Pod(id, PodType.PASSENGER, PodStatus.ACTIVE),
-    )
-
-    return jsonify(pod.data)
-
 @api.route("/tubes")
 def tubes():
     schema = TubeSchema(many=True)
@@ -64,3 +45,22 @@ def tube(id):
     )
 
     return jsonify(tube.data)
+
+@api.route("/pods")
+def pods():
+    schema = PodSchema(many=True)
+    pods = schema.dump([
+        Pod(2000, PodType.PASSENGER, PodStatus.ACTIVE),
+        Pod(3005, PodType.CARGO, PodStatus.ACTIVE),
+    ])
+
+    return jsonify(pods.data)
+
+@api.route("/pods/<int:id>")
+def pod(id):
+    schema = PodSchema()
+    pod = schema.dump(
+        Pod(id, PodType.PASSENGER, PodStatus.ACTIVE),
+    )
+
+    return jsonify(pod.data)
