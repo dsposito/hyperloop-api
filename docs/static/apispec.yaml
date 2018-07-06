@@ -1,0 +1,103 @@
+---
+info:
+  title: Hyperloop API Documentation
+  version: 1.0.0
+  description: >
+    API documentation for the future of mobility.
+
+    # Introduction
+
+    This is an intro page!
+
+paths:
+  "/api/stations":
+    get:
+      summary: List all stations
+      description: Get a list of stations.
+      responses:
+        '200':
+          description: List of stations
+          schema:
+            type: array
+            items:
+              $ref: "schemas/station.yaml"
+  "/api/stations/{id}":
+    get:
+      summary: Retrieve a station
+      description: Retrieve a single station of a given ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID of the station to get
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: A station
+          schema:
+            $ref: "schemas/station.yaml"
+        '404':
+          description: Station not found
+  "/api/tubes":
+    get:
+      summary: List all tubes
+      description: Get a list of tubes.
+      responses:
+        '200':
+          description: List of tubes
+          schema:
+            type: array
+            items:
+              $ref: "schemas/tube.yaml"
+  "/api/tubes/{id}":
+    get:
+      summary: Retrieve a tube
+      description: Retrieve a single tube of a given ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID of the tube to get
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: A tube
+          schema:
+            $ref: "schemas/tube.yaml"
+        '404':
+          description: Tube not found
+  "/api/pods":
+    get:
+      summary: List all pods
+      description: Get a list of pods.
+      responses:
+        '200':
+          description: List of pods
+          schema:
+            type: array
+            items:
+              $ref: "schemas/pod.yaml"
+  "/api/pods/{id}":
+    get:
+      summary: Retrieve a pod
+      description: Retrieve a single pod of a given ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID of the pod to get
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: A pod
+          schema:
+            $ref: "schemas/pod.yaml"
+        '404':
+          description: Pod not found
+
+swagger: '2.0'
+definitions: {}
+parameters: {}

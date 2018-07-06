@@ -1,0 +1,51 @@
+properties:
+  direction:
+    description: The tube's primary direction.
+    enum:
+    - north
+    - south
+    - east
+    - west
+    example: north
+    type: string
+  elevation:
+    description: The tube's elevation.
+    example: 1
+    format: int32
+    type: integer
+  id:
+    description: The tube's unique identifier.
+    example: 35
+    format: int32
+    type: integer
+  name:
+    description: The tube's memorable name.
+    example: CA-NT1
+    type: string
+  region:
+    description: The tube's region (state or county).
+    example: CA
+    type: string
+  status:
+    description: The tube's status.
+    enum:
+    - active
+    - inactive
+    example: active
+    type: string
+  type:
+    description: The tube's type.
+    enum:
+    - elevated
+    - tunnel
+    example: tunnel
+    type: string
+required:
+- direction
+- elevation
+- id
+- name
+- region
+- status
+- type
+type: object
