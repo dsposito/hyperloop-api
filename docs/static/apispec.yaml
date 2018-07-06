@@ -1,4 +1,6 @@
 ---
+swagger: '2.0'
+
 info:
   title: Hyperloop API Documentation
   version: 1.0.0
@@ -14,6 +16,8 @@ paths:
     get:
       summary: List all stations
       description: Get a list of stations.
+      tags:
+        - stations
       responses:
         '200':
           description: List of stations
@@ -25,6 +29,8 @@ paths:
     get:
       summary: Retrieve a station
       description: Retrieve a single station of a given ID.
+      tags:
+        - stations
       parameters:
         - name: id
           in: path
@@ -43,6 +49,8 @@ paths:
     get:
       summary: List all tubes
       description: Get a list of tubes.
+      tags:
+        - tubes
       responses:
         '200':
           description: List of tubes
@@ -54,6 +62,8 @@ paths:
     get:
       summary: Retrieve a tube
       description: Retrieve a single tube of a given ID.
+      tags:
+        - tubes
       parameters:
         - name: id
           in: path
@@ -72,6 +82,8 @@ paths:
     get:
       summary: List all pods
       description: Get a list of pods.
+      tags:
+        - pods
       responses:
         '200':
           description: List of pods
@@ -83,6 +95,8 @@ paths:
     get:
       summary: Retrieve a pod
       description: Retrieve a single pod of a given ID.
+      tags:
+        - pods
       parameters:
         - name: id
           in: path
@@ -98,6 +112,52 @@ paths:
         '404':
           description: Pod not found
 
-swagger: '2.0'
+tags:
+- name: stations
+  description: |
+    Stations serve as arrival and departure points for pods.
+    Stations are named based on the following pattern:
+
+    `{REGION}-{TYPE}{LATITUDE}{LONGITUDE}`
+
+    **Example:** HAW-PUB33118 (Hawthorne - California, Public, Geo-coordinates: 33.920659, -118.328278)
+
+    * **Region:** The city in which the station is located.
+    * **Type:** The station's accessibility - public or private.
+    * **Latitude:** The degree of latitude at which the station is located.
+    * **Longitude:** The degree of longitude at which the station is located.
+- name: tubes
+  description: |
+    Tubes transport pods from station to station.
+    Tubes are named based on the following pattern:
+
+    `{REGION}-{DIRECTION}{TYPE}{ELEVATION}`
+
+    **Example:** CA-NT1 (California, North, Tunnel, 1)
+
+    * **Region:** The general region in which the tube is located.
+    * **Direction:** The primary direction in which pods travel through the tube.
+    * **Type:** The tube's structural type - underground tunnel or elevated above ground.
+    * **Elevation:** The absolute elevation of the tube (similar to floors in a building).
+- name: pods
+  description: |
+    Pods transport passengers, cargo, and vehicles through a Hyperloop tube from one station to another.
+    Pods are named based on the following pattern:
+
+    `{TYPE}{ALPHA_ID}-{NUMERIC_ID}`
+
+    **Example:** PA-1440 (Passenger, A, 1440)
+
+    * **Type:** The pod's type describes what it transports: passengers, cargo, or vehicles.
+    * **Alpha ID:** A short, alphabetic ID.
+    * **Numeric ID:** A short, numeric ID.
+
+x-tagGroups:
+  - name: API
+    tags:
+      - stations
+      - tubes
+      - pods
+
 definitions: {}
 parameters: {}

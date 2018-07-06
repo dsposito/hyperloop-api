@@ -16,7 +16,7 @@ properties:
     type: integer
   name:
     description: The pod's memorable name.
-    example: CA-1440
+    example: PA-1440
     type: string
   status:
     description: The pod's statuses.
