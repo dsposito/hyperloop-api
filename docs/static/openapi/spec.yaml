@@ -20,7 +20,7 @@ info:
     This would shrink our world.
 
     Hyperloop technology gives us a better path forward via a fast, weather-immune, and sustainable new form of transportation.
-    This site provides documentation for a theoretical Hyperloop API to power the future of mobility.
+    **This site provides documentation for a theoretical Hyperloop API to power the future of mobility.**
 
 paths:
   "/api/stations":
