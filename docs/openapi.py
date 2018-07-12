@@ -1,6 +1,7 @@
 from apispec.ext.marshmallow.swagger import schema2jsonschema
 import json, yaml
 
+from models.loop import LoopSchema
 from models.pod import PodSchema
 from models.station import StationSchema
 from models.tube import TubeSchema
@@ -10,6 +11,7 @@ class OpenAPI():
     # Export final YAML spec to JSON for ReDoc documentation UI.
     def buildSpec():
         schemas = {
+            "loop": LoopSchema(),
             "pod": PodSchema(),
             "station": StationSchema(),
             "tube": TubeSchema(),

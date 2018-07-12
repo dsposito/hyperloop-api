@@ -122,6 +122,39 @@ paths:
             $ref: "schemas/pod.yaml"
         '404':
           description: Pod not found
+  "/api/loops":
+    get:
+      summary: List all loops
+      description: Get a list of loops.
+      tags:
+        - loops
+      responses:
+        '200':
+          description: List of loops
+          schema:
+            type: array
+            items:
+              $ref: "schemas/loop.yaml"
+  "/api/loops/{id}":
+    get:
+      summary: Retrieve a loop
+      description: Retrieve a single loop of a given ID.
+      tags:
+        - loops
+      parameters:
+        - name: id
+          in: path
+          description: ID of the loop to get
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: A loop
+          schema:
+            $ref: "schemas/loop.yaml"
+        '404':
+          description: Loop not found
 
 tags:
 - name: stations
@@ -162,6 +195,10 @@ tags:
     * **Type:** The pod's type describes what it transports: passengers, cargo, or vehicles.
     * **Alpha ID:** A short, alphabetic ID.
     * **Numeric ID:** A short, numeric ID.
+- name: loops
+  description: |
+    Loops are the associations of stations, tubes and pods.
+    A loop is the trip a pod takes through tunnels from one origin station to a final destination station.
 
 x-tagGroups:
   - name: API
@@ -169,6 +206,7 @@ x-tagGroups:
       - stations
       - tubes
       - pods
+      - loops
 
 definitions: {}
 parameters: {}
