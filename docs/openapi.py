@@ -1,10 +1,9 @@
 from apispec.ext.marshmallow.swagger import schema2jsonschema
+import json, yaml
 
 from models.pod import PodSchema
 from models.station import StationSchema
 from models.tube import TubeSchema
-
-import json, yaml
 
 class OpenAPI():
     # Export each model's schema to YAML for API documentation.

@@ -1,7 +1,7 @@
 from marshmallow import Schema, fields
-from models.model import ModelEnum
-
 import random, string
+
+from models.model import ModelEnum
 
 class Pod():
     def __init__(self, id, type, status, max_speed=None, max_weight=None):

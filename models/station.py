@@ -1,4 +1,5 @@
 from marshmallow import Schema, fields
+
 from models.model import ModelEnum
 
 class Station():

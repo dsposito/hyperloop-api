@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template
+import os
 
 from docs.openapi import OpenAPI
-
-import os
 
 docs = Blueprint("docs", "docs", url_prefix="/docs", template_folder="templates", static_folder="static")
 
