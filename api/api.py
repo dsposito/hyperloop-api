@@ -1,5 +1,7 @@
+from datetime import datetime
 from flask import Blueprint, jsonify
 
+from models.loop import *
 from models.pod import *
 from models.station import *
 from models.tube import *
@@ -65,3 +67,55 @@ def pod(id):
     )
 
     return jsonify(pod.data)
+
+@api.route("/loops")
+def loops():
+    schema = LoopSchema(many=True)
+    loops = schema.dump([
+        Loop(
+            45671,
+            Pod(2000, PodType.PASSENGER, PodStatus.ACTIVE),
+            Station(1, StationType.PUBLIC, "HAW", 33.920659, -118.328278, StationStatus.ACTIVE),
+            Station(1900, StationType.PUBLIC, "FRE", 37.492509, -121.944616, StationStatus.ACTIVE),
+            datetime.strptime('January 1 2020 11:00AM', '%B %d %Y %I:%M%p'),
+            datetime.strptime('January 1 2020 11:30AM', '%B %d %Y %I:%M%p'),
+            LoopStatus.TRANSITING
+        ),
+        Loop(
+            458865,
+            Pod(3005, PodType.CARGO, PodStatus.ACTIVE),
+            Station(1, StationType.PUBLIC, "HAW", 33.920659, -118.328278, StationStatus.ACTIVE),
+            Station(6800, StationType.PRIVATE, "EMD", 35.671724, -97.508266, StationStatus.ACTIVE),
+            datetime.strptime('July 16 2020 11:00AM', '%B %d %Y %I:%M%p'),
+            datetime.strptime('July 16 2020 12:30PM', '%B %d %Y %I:%M%p'),
+            LoopStatus.DEPARTING
+        ),
+        Loop(
+            45890,
+            Pod(2000, PodType.PASSENGER, PodStatus.ACTIVE),
+            Station(1900, StationType.PUBLIC, "FRE", 37.492509, -121.944616, StationStatus.ACTIVE),
+            Station(1, StationType.PUBLIC, "HAW", 33.920659, -118.328278, StationStatus.ACTIVE),
+            datetime.strptime('December 4 2020 2:00PM', '%B %d %Y %I:%M%p'),
+            datetime.strptime('December 4 2020 2:30PM', '%B %d %Y %I:%M%p'),
+            LoopStatus.COMPLETED
+        ),
+    ])
+
+    return jsonify(loops.data)
+
+@api.route("/loops/<int:id>")
+def loop(id):
+    schema = LoopSchema()
+    loop = schema.dump(
+        Loop(
+            id,
+            Pod(2000, PodType.PASSENGER, PodStatus.ACTIVE),
+            Station(1, StationType.PUBLIC, "HAW", 33.920659, -118.328278, StationStatus.ACTIVE),
+            Station(1900, StationType.PUBLIC, "FRE", 37.492509, -121.944616, StationStatus.ACTIVE),
+            datetime.strptime('January 1 2020 11:00AM', '%B %d %Y %I:%M%p'),
+            datetime.strptime('January 1 2020 11:30AM', '%B %d %Y %I:%M%p'),
+            LoopStatus.TRANSITING
+        )
+    )
+
+    return jsonify(loop.data)
