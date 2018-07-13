@@ -1,41 +1,42 @@
+type: object
 properties:
   id:
+    type: integer
+    format: int32
     description: The station's unique identifier.
     example: 1
-    format: int32
-    type: integer
-  latitude:
-    description: The station's latitude location measurement.
-    example: 33.920659
-    format: float
-    type: number
-  longitude:
-    description: The station's longitude location measurement.
-    example: -118.328278
-    format: float
-    type: number
-  name:
-    description: The station's memorable name.
-    example: LA-PUB33118
-    type: string
-  region:
-    description: The station's region (city).
-    example: HAW
-    type: string
-  status:
-    description: The station's status.
-    enum:
-    - active
-    - inactive
-    example: active
-    type: string
   type:
+    type: string
     description: The station's type.
     enum:
     - public
     - private
     example: public
+  region:
     type: string
+    description: The station's region (city).
+    example: HAW
+  latitude:
+    type: number
+    format: float
+    description: The station's latitude location measurement.
+    example: 33.920659
+  longitude:
+    type: number
+    format: float
+    description: The station's longitude location measurement.
+    example: -118.328278
+  status:
+    type: string
+    description: The station's status.
+    enum:
+    - active
+    - inactive
+    example: active
+  name:
+    type: string
+    description: The station's memorable name.
+    example: LA-PUB33118
 required:
 - id
 - latitude
@@ -44,4 +45,3 @@ required:
 - region
 - status
 - type
-type: object

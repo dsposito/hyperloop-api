@@ -1,154 +1,47 @@
+type: object
 properties:
-  arrival_datetime:
-    description: The datetime the pod arrives at the destination station.
-    example: '2020-07-16T12:30:00+00:00'
-    format: date-time
-    type: string
-  departure_datetime:
-    description: The datetime the pod departs from the origin station.
-    example: '2020-07-16T11:00:00+00:00'
-    format: date-time
-    type: string
-  destination_station:
-    description: The station the pod arrives at.
-    properties:
-      id:
-        description: The station's unique identifier.
-        example: 1
-        format: int32
-        type: integer
-      latitude:
-        description: The station's latitude location measurement.
-        example: 33.920659
-        format: float
-        type: number
-      longitude:
-        description: The station's longitude location measurement.
-        example: -118.328278
-        format: float
-        type: number
-      name:
-        description: The station's memorable name.
-        example: LA-PUB33118
-        type: string
-      region:
-        description: The station's region (city).
-        example: HAW
-        type: string
-      status:
-        description: The station's status.
-        enum:
-        - active
-        - inactive
-        example: active
-        type: string
-      type:
-        description: The station's type.
-        enum:
-        - public
-        - private
-        example: public
-        type: string
-    required:
-    - id
-    - latitude
-    - longitude
-    - name
-    - region
-    - status
-    - type
-    type: object
   id:
+    type: integer
+    format: int32
     description: The loop's unique identifier.
     example: 45671
-    format: int32
-    type: integer
-  origin_station:
-    description: The station the pod departs from.
-    properties:
-      id:
-        description: The station's unique identifier.
-        example: 1
-        format: int32
-        type: integer
-      latitude:
-        description: The station's latitude location measurement.
-        example: 33.920659
-        format: float
-        type: number
-      longitude:
-        description: The station's longitude location measurement.
-        example: -118.328278
-        format: float
-        type: number
-      name:
-        description: The station's memorable name.
-        example: LA-PUB33118
-        type: string
-      region:
-        description: The station's region (city).
-        example: HAW
-        type: string
-      status:
-        description: The station's status.
-        enum:
-        - active
-        - inactive
-        example: active
-        type: string
-      type:
-        description: The station's type.
-        enum:
-        - public
-        - private
-        example: public
-        type: string
-    required:
-    - id
-    - latitude
-    - longitude
-    - name
-    - region
-    - status
-    - type
-    type: object
   pod:
-    description: The pod being transported.
+    type: object
     properties:
       id:
+        type: integer
+        format: int32
         description: The pod's unique identifier.
         example: 4597
-        format: int32
-        type: integer
-      max_speed:
-        description: The max speed the pod can travel at.
-        example: 700
-        format: int32
-        type: integer
-      max_weight:
-        description: The max weight the pod can carry.
-        example: 3000
-        format: int32
-        type: integer
-      name:
-        description: The pod's memorable name.
-        example: PA-1440
-        type: string
-      status:
-        description: The pod's statuses.
-        enum:
-        - active
-        - inactive
-        example: active
-        type: string
       type:
+        type: string
         description: The pod's type.
         enum:
         - cargo
         - passenger
         - vehicle
         example: passenger
+      status:
         type: string
+        description: The pod's statuses.
+        enum:
+        - active
+        - inactive
+        example: active
+      max_speed:
+        type: integer
+        format: int32
+        description: The max speed the pod can travel at.
+        example: 700
+      max_weight:
+        type: integer
+        format: int32
+        description: The max weight the pod can carry.
+        example: 3000
+      name:
+        type: string
+        description: The pod's memorable name.
+        example: PA-1440
     required:
     - id
     - max_speed
@@ -156,8 +49,117 @@ properties:
     - name
     - status
     - type
+    description: The pod being transported.
+  origin_station:
     type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: The station's unique identifier.
+        example: 1
+      type:
+        type: string
+        description: The station's type.
+        enum:
+        - public
+        - private
+        example: public
+      region:
+        type: string
+        description: The station's region (city).
+        example: HAW
+      latitude:
+        type: number
+        format: float
+        description: The station's latitude location measurement.
+        example: 33.920659
+      longitude:
+        type: number
+        format: float
+        description: The station's longitude location measurement.
+        example: -118.328278
+      status:
+        type: string
+        description: The station's status.
+        enum:
+        - active
+        - inactive
+        example: active
+      name:
+        type: string
+        description: The station's memorable name.
+        example: LA-PUB33118
+    required:
+    - id
+    - latitude
+    - longitude
+    - name
+    - region
+    - status
+    - type
+    description: The station the pod departs from.
+  destination_station:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: The station's unique identifier.
+        example: 1
+      type:
+        type: string
+        description: The station's type.
+        enum:
+        - public
+        - private
+        example: public
+      region:
+        type: string
+        description: The station's region (city).
+        example: HAW
+      latitude:
+        type: number
+        format: float
+        description: The station's latitude location measurement.
+        example: 33.920659
+      longitude:
+        type: number
+        format: float
+        description: The station's longitude location measurement.
+        example: -118.328278
+      status:
+        type: string
+        description: The station's status.
+        enum:
+        - active
+        - inactive
+        example: active
+      name:
+        type: string
+        description: The station's memorable name.
+        example: LA-PUB33118
+    required:
+    - id
+    - latitude
+    - longitude
+    - name
+    - region
+    - status
+    - type
+    description: The station the pod arrives at.
+  departure_datetime:
+    type: string
+    format: date-time
+    description: The datetime the pod departs from the origin station.
+    example: '2020-07-16T11:00:00+00:00'
+  arrival_datetime:
+    type: string
+    format: date-time
+    description: The datetime the pod arrives at the destination station.
+    example: '2020-07-16T12:30:00+00:00'
   status:
+    type: string
     description: The loop's status.
     enum:
     - scheduled
@@ -167,7 +169,6 @@ properties:
     - completed
     - canceled
     example: transiting
-    type: string
 required:
 - arrival_datetime
 - departure_datetime
@@ -176,4 +177,3 @@ required:
 - origin_station
 - pod
 - status
-type: object

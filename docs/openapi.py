@@ -1,5 +1,5 @@
 from apispec.ext.marshmallow.swagger import schema2jsonschema
-import json, yaml
+import json, oyaml as yaml
 
 from models.loop import LoopSchema
 from models.pod import PodSchema
@@ -26,6 +26,8 @@ class OpenAPI():
             content = json.loads(json.dumps(content))
 
             with open("docs/static/openapi/schemas/" + name + ".yaml", "w") as file:
+                # Use oyaml to preserve order in which schema fields were declared (otherwise alpha sorts).
+                # https://github.com/yaml/pyyaml/issues/110#issuecomment-391584642
                 yaml.dump(content, file, default_flow_style=False, allow_unicode=True)
 
         # Export combined YAML to JSON for ReDoc.

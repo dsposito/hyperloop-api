@@ -1,38 +1,39 @@
+type: object
 properties:
   id:
+    type: integer
+    format: int32
     description: The pod's unique identifier.
     example: 4597
-    format: int32
-    type: integer
-  max_speed:
-    description: The max speed the pod can travel at.
-    example: 700
-    format: int32
-    type: integer
-  max_weight:
-    description: The max weight the pod can carry.
-    example: 3000
-    format: int32
-    type: integer
-  name:
-    description: The pod's memorable name.
-    example: PA-1440
-    type: string
-  status:
-    description: The pod's statuses.
-    enum:
-    - active
-    - inactive
-    example: active
-    type: string
   type:
+    type: string
     description: The pod's type.
     enum:
     - cargo
     - passenger
     - vehicle
     example: passenger
+  status:
     type: string
+    description: The pod's statuses.
+    enum:
+    - active
+    - inactive
+    example: active
+  max_speed:
+    type: integer
+    format: int32
+    description: The max speed the pod can travel at.
+    example: 700
+  max_weight:
+    type: integer
+    format: int32
+    description: The max weight the pod can carry.
+    example: 3000
+  name:
+    type: string
+    description: The pod's memorable name.
+    example: PA-1440
 required:
 - id
 - max_speed
@@ -40,4 +41,3 @@ required:
 - name
 - status
 - type
-type: object
