@@ -19,7 +19,7 @@ This would shrink our world.
 This application uses the following components to provide a theoretical Hyperloop API and documentation portal:
 
  * **Python 3.5+**
- * **Flask 1.0.\*:** Flask is a popular Python microframework that's great for performant APIs.
+ * **Flask:** Flask is a popular Python microframework that's great for performant APIs.
  * **Flask Blueprints:** [Blueprints](http://flask.pocoo.org/docs/1.0/blueprints/#blueprints) are used to modularize the `api` and `docs` components.
  * **Marshmallow:** [Marshmallow](https://github.com/marshmallow-code/marshmallow) is used to define a [schema](https://github.com/dsposito/hyperloop-api/blob/master/models/station.py#L30) for each model. This is really useful for API validation, serialization and to [auto generate](https://github.com/dsposito/hyperloop-api/blob/master/docs/openapi.py#L12) an associated [YAML file](https://github.com/dsposito/hyperloop-api/blob/master/docs/static/openapi/schemas/station.yaml) for documentation.
  * **OpenAPI:** The [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification) is used to [document the API](https://github.com/dsposito/hyperloop-api/blob/master/docs/static/openapi/spec.yaml).
