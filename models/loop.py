@@ -1,7 +1,7 @@
 from datetime import datetime
-from marshmallow import Schema, fields
+from marshmallow import fields
 
-from models.model import ModelEnum
+from models.model import *
 from models.pod import PodSchema
 from models.station import StationSchema
 
@@ -23,7 +23,7 @@ class LoopStatus(str, ModelEnum):
     COMPLETED = "completed"
     CANCELED = "canceled"
 
-class LoopSchema(Schema):
+class LoopSchema(ModelSchema):
     id = fields.Int(description="The loop's unique identifier.", example=45671, required=True)
     pod = fields.Nested(PodSchema, description="The pod being transported.", required=True)
     origin_station = fields.Nested(StationSchema, description="The station the pod departs from.", required=True)

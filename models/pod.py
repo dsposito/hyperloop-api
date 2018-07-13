@@ -1,7 +1,7 @@
-from marshmallow import Schema, fields
+from marshmallow import fields
 import random, string
 
-from models.model import ModelEnum
+from models.model import *
 
 class Pod():
     def __init__(self, id, type, status, max_speed=None, max_weight=None):
@@ -51,7 +51,7 @@ class PodStatus(str, ModelEnum):
     ACTIVE = "active"
     INACTIVE = "inactive"
 
-class PodSchema(Schema):
+class PodSchema(ModelSchema):
     id = fields.Int(description="The pod's unique identifier.", example=4597, required=True)
     type = fields.Str(description="The pod's type.", enum=list(PodType), example=PodType.PASSENGER, required=True)
     status = fields.Str(description="The pod's statuses.", enum=list(PodStatus), example=PodStatus.ACTIVE, required=True)

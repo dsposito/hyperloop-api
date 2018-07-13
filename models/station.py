@@ -1,6 +1,6 @@
-from marshmallow import Schema, fields
+from marshmallow import fields
 
-from models.model import ModelEnum
+from models.model import *
 
 class Station():
     def __init__(self, id, type, region, latitude, longitude, status):
@@ -28,7 +28,7 @@ class StationStatus(str, ModelEnum):
     ACTIVE = "active"
     INACTIVE = "inactive"
 
-class StationSchema(Schema):
+class StationSchema(ModelSchema):
     id = fields.Int(description="The station's unique identifier.", example=1, required=True)
     type = fields.Str(description="The station's type.", enum=list(StationType), example=StationType.PUBLIC, required=True)
     region = fields.Str(description="The station's region (city).", example="HAW", required=True)

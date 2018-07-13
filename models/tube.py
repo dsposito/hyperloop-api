@@ -1,6 +1,6 @@
-from marshmallow import Schema, fields
+from marshmallow import fields
 
-from models.model import ModelEnum
+from models.model import *
 
 class Tube():
     def __init__(self, id, type, region, direction, elevation, status):
@@ -34,7 +34,7 @@ class TubeStatus(str, ModelEnum):
     ACTIVE = "active"
     INACTIVE = "inactive"
 
-class TubeSchema(Schema):
+class TubeSchema(ModelSchema):
     id = fields.Int(description="The tube's unique identifier.", example=35, required=True)
     type = fields.Str(description="The tube's type.", enum=list(TubeType), example=TubeType.TUNNEL, required=True)
     region = fields.Str(description="The tube's region (state or county).", example="CA", required=True)
