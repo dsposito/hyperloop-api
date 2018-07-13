@@ -199,6 +199,14 @@ tags:
   description: |
     Loops are the associations of stations, tubes and pods.
     A loop is the trip a pod takes through tunnels from one origin station to a final destination station.
+    Loop names are not guaranteed to be unique and are based on the following pattern:
+
+    `{DISTINATION_STATION.REGION}-{POD_ID}`
+
+    **Example:** HAW-4597 (Hawthorne - California, 4597)
+
+    * **Destination Station - Region:** The city in which the destination station is located.
+    * **Pod ID:** The ID of the pod.
 
 x-tagGroups:
   - name: API

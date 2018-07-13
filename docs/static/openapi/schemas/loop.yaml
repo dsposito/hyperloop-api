@@ -169,11 +169,16 @@ properties:
     - completed
     - canceled
     example: transiting
+  name:
+    type: string
+    description: The loop's memorable name.
+    example: HAW-4597
 required:
 - arrival_datetime
 - departure_datetime
 - destination_station
 - id
+- name
 - origin_station
 - pod
 - status
