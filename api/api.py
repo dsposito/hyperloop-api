@@ -82,7 +82,7 @@ def loops():
             LoopStatus.TRANSITING
         ),
         Loop(
-            458865,
+            45865,
             Pod(3005, PodType.CARGO, PodStatus.ACTIVE),
             Station(1, StationType.PUBLIC, "HAW", 33.920659, -118.328278, StationStatus.ACTIVE),
             Station(6800, StationType.PRIVATE, "EMD", 35.671724, -97.508266, StationStatus.ACTIVE),
