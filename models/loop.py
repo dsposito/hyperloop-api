@@ -35,4 +35,4 @@ class LoopSchema(ModelSchema):
     departure_datetime = fields.DateTime(description="The datetime the pod departs from the origin station.", example="2020-07-16T11:00:00+00:00", required=True)
     arrival_datetime = fields.DateTime(description="The datetime the pod arrives at the destination station.", example="2020-07-16T12:30:00+00:00", required=True)
     status = fields.Str(description="The loop's status.", enum=list(LoopStatus), example=LoopStatus.TRANSITING, required=True)
-    name = fields.Str(description="The loop's memorable name.", example="FRE-2000", required=True)
+    name = fields.Str(description="The loop's memorable name.", example="HAW-4597", required=True)
