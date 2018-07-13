@@ -35,4 +35,4 @@ class StationSchema(ModelSchema):
     latitude = fields.Float(description="The station's latitude location measurement.", example=33.920659, validate=lambda p: -90 <= p <= 90, required=True)
     longitude = fields.Float(description="The station's longitude location measurement.", example=-118.328278, validate=lambda p: -180 <= p <= 180, required=True)
     status = fields.Str(description="The station's status.", enum=list(StationStatus), example=StationStatus.ACTIVE, required=True)
-    name = fields.Str(description="The station's memorable name.", example="LA-PUB33118", required=True)
+    name = fields.Str(description="The station's memorable name.", example="HAW-PUB33118", required=True)

@@ -89,7 +89,7 @@ properties:
       name:
         type: string
         description: The station's memorable name.
-        example: LA-PUB33118
+        example: HAW-PUB33118
     required:
     - id
     - latitude
@@ -138,7 +138,7 @@ properties:
       name:
         type: string
         description: The station's memorable name.
-        example: LA-PUB33118
+        example: HAW-PUB33118
     required:
     - id
     - latitude
