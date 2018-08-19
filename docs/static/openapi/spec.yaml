@@ -197,8 +197,8 @@ tags:
     * **Numeric ID:** A short, numeric ID.
 - name: loops
   description: |
-    Loops are the associations of stations, tubes and pods.
-    A loop is the trip a pod takes through tunnels from one origin station to a final destination station.
+    Loops are the associations of stations and pods.
+    A loop is the trip a pod takes through tubes from one origin station to a final destination station.
     Loop names are not guaranteed to be unique and are based on the following pattern:
 
     `{DISTINATION_STATION.REGION}-{POD_ID}`
