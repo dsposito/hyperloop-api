@@ -1,5 +1,5 @@
 ---
-swagger: '2.0'
+swagger: "2.0"
 
 info:
   title: Hyperloop API Documentation
@@ -30,7 +30,7 @@ paths:
       tags:
         - stations
       responses:
-        '200':
+        "200":
           description: List of stations
           schema:
             type: array
@@ -50,11 +50,11 @@ paths:
           type: integer
           format: int32
       responses:
-        '200':
+        "200":
           description: A station
           schema:
             $ref: "schemas/station.yaml"
-        '404':
+        "404":
           description: Station not found
   "/api/tubes":
     get:
@@ -63,7 +63,7 @@ paths:
       tags:
         - tubes
       responses:
-        '200':
+        "200":
           description: List of tubes
           schema:
             type: array
@@ -83,11 +83,11 @@ paths:
           type: integer
           format: int32
       responses:
-        '200':
+        "200":
           description: A tube
           schema:
             $ref: "schemas/tube.yaml"
-        '404':
+        "404":
           description: Tube not found
   "/api/pods":
     get:
@@ -96,7 +96,7 @@ paths:
       tags:
         - pods
       responses:
-        '200':
+        "200":
           description: List of pods
           schema:
             type: array
@@ -116,11 +116,11 @@ paths:
           type: integer
           format: int32
       responses:
-        '200':
+        "200":
           description: A pod
           schema:
             $ref: "schemas/pod.yaml"
-        '404':
+        "404":
           description: Pod not found
   "/api/loops":
     get:
@@ -129,7 +129,7 @@ paths:
       tags:
         - loops
       responses:
-        '200':
+        "200":
           description: List of loops
           schema:
             type: array
@@ -149,11 +149,11 @@ paths:
           type: integer
           format: int32
       responses:
-        '200':
+        "200":
           description: A loop
           schema:
             $ref: "schemas/loop.yaml"
-        '404':
+        "404":
           description: Loop not found
 
 tags:
